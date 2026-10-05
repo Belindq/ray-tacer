@@ -1,0 +1,36 @@
+#include <iostream>
+#include "colour.h"
+#include "vec3.h"
+#include "ray.h"
+
+
+
+int main() {
+
+    ray colour_ray(const ray& r){
+        return colour(0,0,0);
+    }
+
+    // Image
+    auto inspect_ratio 16.0/9.0;
+    int image_width = 400;
+
+    int image_height = int(image_width/inspect_ratio);
+    image_height = (image_height<1) ? 1 : image_height;
+    // Camera
+
+    
+
+    // Render
+
+    std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
+
+    for (int j = 0; j < image_height; j++) {
+        std::clog<<"scanlines remaining: " << image_height-j-1 << ' ' << std::flush;
+        for (int i = 0; i < image_width; i++) {
+            auto pixel =( double(i)/image_height, double(j)/image_width, 0);
+            write_colour(std::cout, pixel);
+        }
+    }
+    std::clog << "\nDone.\n";
+}
